@@ -2,11 +2,13 @@ import React from 'react';
 import { Navbar, Nav, Col} from "react-bootstrap";
 import {BrowserRouter as Router,Switch,Route,Link} from 'react-router-dom';
 import Statistics from '../Pages/Statistics';
+import "./Header.css";
 import Pointsofsales from '../Pages/Pointsofsales';
+
 function Header() {
     return (
         <>
-        <Navbar variant="light">
+        <Navbar variant="light" className = {"nav-header"}>
 
             
                 <Col md={9}><Navbar.Brand href="/">"CBJ - Иерихон"</Navbar.Brand></Col>

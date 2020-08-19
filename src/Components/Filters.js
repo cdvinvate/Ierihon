@@ -1,12 +1,12 @@
 import React from 'react';
-import {Form, InputGroup, Container, Col,Row} from 'react-bootstrap';
+import {Form, InputGroup, Container, Col, Row, Button} from 'react-bootstrap';
 import DatePick from "./DatePicker";
 import "./Filters.css";
 
 function Filters() {
     return (
-        <Container className={"container-form"}>
-            <Form.Group>
+
+            <Form className={"container-form"}>
                 <Form.Row>
                     <Form.Group as={Col}>
                         <Form.Row>
@@ -42,7 +42,7 @@ function Filters() {
                                 <Form.Row>
                                     <Form.Group as={Col} md="6" controlId="validationCustom02">
                                         <Row> <Col md="2"><Form.Label>От</Form.Label></Col>
-                                        <Col md="10"><DatePick/></Col></Row>
+                                            <Col md="10"><DatePick controlId="validationCustom02"/></Col></Row>
                                     </Form.Group>
                                     <Form.Group as={Col} md="6" controlId="validationCustom02">
                                         <Row> <Col md="2"><Form.Label>До</Form.Label></Col>
@@ -61,26 +61,37 @@ function Filters() {
                                     defaultValue=""
                                 />
                             </Form.Group>
-
                         </Form.Row>
                     </Form.Group>
-
                     <Form.Group as={Col} md="3" controlId="validationCustom02">
-                        <Form.Label>Last name</Form.Label>
+                        <Form.Label>Бренд</Form.Label>
                         <Form.Control as="select" multiple>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                            <option>
+                                <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Бренд 1" />
+                            </Form.Group>
+                            </option>
+                            <option>
+                                <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Check type="checkbox" label="2" />
+                                </Form.Group>
+                            </option>
+                            <option>
+                                <Form.Group controlId="formBasicCheckbox">
+                                    <Form.Check type="checkbox"  />
+                                </Form.Group>
+                            </option>
                             <option>4</option>
                             <option>5</option>
                         </Form.Control>
-                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
+
                 </Form.Row>
-            </Form.Group>
-        </Container>
+                <Button variant="outline-dark" type="submit">
+                    Получить статистику
+                </Button>
+            </Form>
 
     );
 }
-
 export default Filters;
