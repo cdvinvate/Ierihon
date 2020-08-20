@@ -1,13 +1,18 @@
 import React from 'react';
 import './App.css';
-import { Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './Components/Header';
+import Header from './Components/Header/index';
+
+
+
 
 function App() {
-  return (
-<Header/>
-  );
+    return (
+        <>
+            <Header/>
+
+        </>
+    );
 }
 
 export default App;

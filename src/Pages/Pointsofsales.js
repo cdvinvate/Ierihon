@@ -1,9 +1,10 @@
 import React from 'react';
+import Tabl from '../Components/Tabl/index';
 
 function Pointsofsales() {
-  return (
-'points'
-  );
+    return (
+        <Tabl/>
+    );
 }
 
 export default Pointsofsales;
