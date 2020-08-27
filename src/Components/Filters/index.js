@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useEffect,useState}from 'react';
 import {Form, InputGroup, Container, Col, Row, Button} from 'react-bootstrap';
 import DatePick from ".././DatePicker";
 import "./style.css";
+import BrandFilters from './BrandFilters/index'
+import ProductCategories from './ProductCategories/index'
 
-function Filters() {
+function Filters(props) {
+    const [arr,setArr]= useState([]);
+    const asyncAction = async () =>{
+        const res = await (await fetch(`https://jsonplaceholder.typicode.com/users`)).json();
+        setArr(res);
+    }
+    useEffect(()=>{
+       asyncAction();
+    });
     return (
 
         <Form className={"container-form"}>
@@ -22,8 +32,7 @@ function Filters() {
                         <Form.Group as={Col} md="6" controlId="validationCustom02">
                             <Form.Label>Категория товара</Form.Label>
                             <Form.Control as="select" defaultValue="Choose...">
-                                <option>Не выбрано..</option>
-                                <option>...</option>
+                                <ProductCategories categories = {arr.map(task => task.name)}/>
                             </Form.Control>
                         </Form.Group>
                     </Form.Row>
@@ -63,27 +72,9 @@ function Filters() {
                         </Form.Group>
                     </Form.Row>
                 </Form.Group>
-                <Form.Group as={Col} md="3" controlId="validationCustom02">
+                <Form.Group as={Col} md="3" className={"checkbox-style"} controlId="validationCustom02">
                     <Form.Label>Бренд</Form.Label>
-                    <Form.Control as="select" multiple>
-                        <option>
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Бренд 1"/>
-                            </Form.Group>
-                        </option>
-                        <option>
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="2"/>
-                            </Form.Group>
-                        </option>
-                        <option>
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox"/>
-                            </Form.Group>
-                        </option>
-                        <option>4</option>
-                        <option>5</option>
-                    </Form.Control>
+                    <BrandFilters brands={arr.map(task => task.name)} />
                 </Form.Group>
 
             </Form.Row>
