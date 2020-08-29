@@ -1,0 +1,13 @@
+.container-form {
+    border: 2px solid black;
+    padding: 4%;
+    margin: 1%;
+}
+
+.button-submit {
+    display: flex;
+}
+.checkbox-style{
+    overflow: hidden scroll;
+    height: 15em;
+}
